@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tes/model/poli.dart';
+import 'package:tes/ui/poli_update_form.dart';
 
 class PoliDetail extends StatefulWidget {
   final Poli poli;
@@ -31,20 +32,31 @@ class _PoliDetailState extends State<PoliDetail> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                  onPressed: () {},
-                  style:
-                      ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                  child: Text('Ubah')),
-              ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  child: Text('Hapus'))
-            ],
+            children: [_tombolUbah(), _tombolHapus()],
           )
         ],
       ),
     );
+  }
+
+  _tombolUbah() {
+    return ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => PoliUpdateForm(poli: widget.poli)));
+        },
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(255, 59, 194, 64)),
+        child: Text('Ubah'));
+  }
+
+  _tombolHapus() {
+    return ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(255, 228, 45, 32)),
+        child: Text('Hapus'));
   }
 }
